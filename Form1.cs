@@ -1,26 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using Newtonsoft.Json;
+
 
 namespace Prueba_TrAvelGateX
 {
     public partial class Form1 : Form
     {
-     
-        public class Hotel_List
-        {
-            public List<hotel> hotels { get; set; }= new List<hotel>();  // new List<hotel>(); // Creo un listado de objetos Hotel para almacenar la informacion de todos los hoteles recibidos por la API.
-        }
-
-      
-
+        private HotelManager Gestor = new HotelManager();  //Definimos un objeto de tipo gestor que será el encargado de traernos los datos de los hoteles
         public Form1()
         {
             InitializeComponent();
@@ -28,43 +14,26 @@ namespace Prueba_TrAvelGateX
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CargarDatosHoteles(); // invocamos la carga de datos.
-        }
-        private string ObtenerDatosHotelesAtalaya() // funcion que obtiene y devuelve los datos de los diferentes hoteles Atalaya,
-                                                    // devuelve un dato Json con toda la informacion obtenida o una cadena vacia si no recibe nada.
-        {
-            try
+            switch(Gestor.Fill_Hotel_Names(Cmb_Hotels)) // invocamos la carga de datos.
             {
-                WebClient Client = new WebClient();   // Creamos un objeto webclient para almacenar la respuesta de la API 
-                return (Client.DownloadString("http://www.mocky.io/v2/5e4a7e4f2f00005d0097d253"));
-            }
-            catch
-            {
-                MessageBox.Show("No se recibieron datos de hoteles!");
-                return ("");
-            }
-        }
+                case 1: MessageBox.Show("No se recibieron datos de hoteles!");// descripcion del error tipo 1;
+                    break;
+                case 2: MessageBox.Show("Error al convertir los datos Json."); // Descripcion del error tipo 2;
+                    break;
+                default:
+                break;
 
-        private void CargarDatosHoteles()
+            }
+            if (Cmb_Hotels.Items.Count>0 )
+            {
+                Cmb_Hotels.SelectedIndex = 0;
+            }
+        }
+        private void Cmb_Hotels_SelectedIndexChanged(object sender, EventArgs e)
         {
-          try 
-            {
-               Hotel_List Hotels = new Hotel_List(); // variable creada para almacenar el listado de hoteles una vez convertido.
-               string Datos= ObtenerDatosHotelesAtalaya(); // creamos y almacenamos en un string los datos recibidos de la API.
-                if (Datos != "") // esta condicion la pongo para evitar el procesamiento si no hemos tenido respuesta.
-                {
-                    Hotels = JsonConvert.DeserializeObject<Hotel_List>(Datos);
-                    CmbHoteles.Items.Clear();
-                    foreach (hotel H in Hotels.hotels)
-                    {
-                        CmbHoteles.Items.Add(H.name);
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error al convertir los datos Json.");
-            }
+            string Name;
+            Name = Convert.ToString (Cmb_Hotels.SelectedItem);
+            Gestor.Fill_Room_Info(Name, Cmb_RoomType);
         }
     }
 }
