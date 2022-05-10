@@ -1,5 +1,4 @@
 D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba TrAvelGateX.csproj.AssemblyReference.cache
-D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba_TrAvelGateX.Form1.resources
 D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba_TrAvelGateX.Properties.Resources.resources
 D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba TrAvelGateX.csproj.GenerateResource.cache
 D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba TrAvelGateX.csproj.CoreCompileInputs.cache
@@ -10,3 +9,4 @@ D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba TrAvelGateX.pdb
 D:\mega\Área Desarrollo\Prueba-TravelGateX\bin\Debug\Newtonsoft.Json.dll
 D:\mega\Área Desarrollo\Prueba-TravelGateX\bin\Debug\Newtonsoft.Json.xml
 D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba TrAvelGateX.csproj.CopyComplete
+D:\mega\Área Desarrollo\Prueba-TravelGateX\obj\Debug\Prueba_TrAvelGateX.Frm_Principal.resources
