@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Prueba_TrAvelGateX
+namespace Prueba_TravelGateX
 {
     static class Program
     {
@@ -11,6 +11,7 @@ namespace Prueba_TrAvelGateX
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
+       
         static void Main()
         {
             Application.EnableVisualStyles();
