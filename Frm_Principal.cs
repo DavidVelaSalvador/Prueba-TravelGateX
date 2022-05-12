@@ -31,19 +31,19 @@ namespace Prueba_TravelGateX
 
         private void Btn_Get_Data_Click(object sender, EventArgs e) // al pulsar el Boton Get data se ejecuta toda la captura y presentacion de los datos en la pantalla.
         {
-            Oficial_Room_List.Clear();// Limpiamos la Lista de Habitaciones para evitar tener datos anteriores.
+            Oficial_Room_List.Clear();
             Atalaya_Plans_Manager.Get_Data(Oficial_Room_List);// Invocamos la orden al gestor de los hoteles Atalaya para rellenar la lista de datos
             Resort_Plans_Manager.Get_Data(Oficial_Room_List);// Invocamos la orden al gestor de los hoteles Resort para rellenar la lista de datos
 
-            Lista.Items.Clear(); // vaciamos la lista del formulario para mostrar los datos nuevos.
+            Lista.Items.Clear(); 
             foreach (Own_Format_Class Room_Data in Oficial_Room_List)  // recorremos la lista de datos para ir presentandolos.
             {
                 ListViewItem Nodo = new ListViewItem(); // Creamos un Nodo para la lista y o vamos rellenando de datos.
-                Nodo.Text = Room_Data.name;  //  el nombre del hotel... 
-                Nodo.SubItems.Add(Room_Data.city);  // la ciudad...
-                Nodo.SubItems.Add(Room_Data.rooms.name);  // el nombre de la habitacion...
-                Nodo.SubItems.Add(Convert.ToString(Room_Data.rooms.room_type)); // el tipo de habitacion
-                switch (Convert.ToInt32(Room_Data.rooms.meal_plan)) // segun el tpo de regimen cargamos uno u otro tipo.
+                Nodo.Text = Room_Data.name;  
+                Nodo.SubItems.Add(Room_Data.city);  
+                Nodo.SubItems.Add(Room_Data.rooms.name); 
+                Nodo.SubItems.Add(Convert.ToString(Room_Data.rooms.room_type)); 
+                switch (Convert.ToInt32(Room_Data.rooms.meal_plan)) 
                 {
                     case 0: Nodo.SubItems.Add("Pensión Completa");
                         break;
@@ -56,16 +56,13 @@ namespace Prueba_TravelGateX
                 }
                 Nodo.SubItems.Add(Convert.ToString(Room_Data.rooms.price)); // cargamos el precio
                 Lista.Items.Add(Nodo);  // por ultimo añadimos el nodo creado a la lista. 
-                Btn_Travel.Enabled = Oficial_Room_List.Count > 0;  // bloqueamos la disponibilidad del boton a haber obtenido informacion de habitaciones.
             }
+            Btn_Travel.Enabled = Oficial_Room_List.Count > 0;  // bloqueamos la disponibilidad del boton a haber obtenido informacion de habitaciones.
             // Cargamos en el Cuadro de texto el resultado de convertir la lista a Json con un formateo adecuado para presentarlo.
             Tb_Code.Text = JsonConvert.SerializeObject(Oficial_Room_List, Formatting.Indented);
-            //MemoryStream Memory_Data = new MemoryStream();
-            //DataContractJsonSerializer Json_Data = new DataContractJsonSerializer(typeof(Own_Format_Json));
-            //Json_Data.WriteObject(Memory_Data, Oficial_Room_List);
-            if (Lista.Items.Count > 0)// valoramos la cantidad de Items contenidos en el listview para evitar intentar ejecutar la seleccion teniendo el combo vacio.
+            if (Lista.Items.Count > 0)   // Si tenemos algo en la lista seleccionamos el primer elemento
             {
-                Lista.Items[0].Selected = true; // seleciconamos el primer elemento de la lista.
+                Lista.Items[0].Selected = true; 
             }
         }
 
@@ -156,9 +153,9 @@ namespace Prueba_TravelGateX
             bool Resultado = false; // inicializamos la busqueda negando el resultado
             if (Room_Data.city == Day.city  &&  Room_Data.rooms.meal_plan== Day.meal_plan && Room_Data.rooms.room_type == Day.room_type ) // si se cumplen las exigencias del cliente
             {
-                Resultado = true;   // anotamos un resultado positivo y lo devolvemos un valor positivo.
+                Resultado = true;   
             }
-            return(Resultado); // Devolvemos el resultado para que continue el programa con el siguiente proceso.
+            return(Resultado); 
         }
     }
 }
