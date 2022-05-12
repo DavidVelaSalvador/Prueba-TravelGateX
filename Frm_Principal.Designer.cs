@@ -31,6 +31,7 @@ namespace Prueba_TravelGateX
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.Panel_Filtros = new System.Windows.Forms.Panel();
+            this.Btn_Travel = new System.Windows.Forms.Button();
             this.Btn_Get_Data = new System.Windows.Forms.Button();
             this.Lista = new System.Windows.Forms.ListView();
             this.Col_Hotel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +45,7 @@ namespace Prueba_TravelGateX
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Tb_Code = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.Tb_Log = new System.Windows.Forms.TextBox();
+            this.Tb_Travel = new System.Windows.Forms.TextBox();
             this.Panel_Filtros.SuspendLayout();
             this.Tab_Principal.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -57,11 +58,28 @@ namespace Prueba_TravelGateX
             this.Panel_Filtros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Filtros.BackColor = System.Drawing.Color.SteelBlue;
+            this.Panel_Filtros.Controls.Add(this.Btn_Travel);
             this.Panel_Filtros.Controls.Add(this.Btn_Get_Data);
             this.Panel_Filtros.Location = new System.Drawing.Point(0, 0);
             this.Panel_Filtros.Name = "Panel_Filtros";
-            this.Panel_Filtros.Size = new System.Drawing.Size(699, 127);
+            this.Panel_Filtros.Size = new System.Drawing.Size(664, 127);
             this.Panel_Filtros.TabIndex = 3;
+            // 
+            // Btn_Travel
+            // 
+            this.Btn_Travel.Enabled = false;
+            this.Btn_Travel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Travel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Travel.ForeColor = System.Drawing.Color.White;
+            this.Btn_Travel.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Travel.Image")));
+            this.Btn_Travel.Location = new System.Drawing.Point(324, 12);
+            this.Btn_Travel.Name = "Btn_Travel";
+            this.Btn_Travel.Size = new System.Drawing.Size(324, 90);
+            this.Btn_Travel.TabIndex = 6;
+            this.Btn_Travel.Text = "Calculate Travel Price";
+            this.Btn_Travel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Btn_Travel.UseVisualStyleBackColor = true;
+            this.Btn_Travel.Click += new System.EventHandler(this.Btn_Travel_Click);
             // 
             // Btn_Get_Data
             // 
@@ -96,7 +114,7 @@ namespace Prueba_TravelGateX
             this.Lista.Location = new System.Drawing.Point(2, 2);
             this.Lista.MultiSelect = false;
             this.Lista.Name = "Lista";
-            this.Lista.Size = new System.Drawing.Size(668, 382);
+            this.Lista.Size = new System.Drawing.Size(633, 382);
             this.Lista.TabIndex = 4;
             this.Lista.UseCompatibleStateImageBehavior = false;
             this.Lista.View = System.Windows.Forms.View.Details;
@@ -143,7 +161,7 @@ namespace Prueba_TravelGateX
             this.Tab_Principal.Location = new System.Drawing.Point(9, 134);
             this.Tab_Principal.Name = "Tab_Principal";
             this.Tab_Principal.SelectedIndex = 0;
-            this.Tab_Principal.Size = new System.Drawing.Size(678, 410);
+            this.Tab_Principal.Size = new System.Drawing.Size(643, 410);
             this.Tab_Principal.TabIndex = 5;
             // 
             // tabPage1
@@ -152,7 +170,7 @@ namespace Prueba_TravelGateX
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(670, 384);
+            this.tabPage1.Size = new System.Drawing.Size(635, 384);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Detail View";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -163,7 +181,7 @@ namespace Prueba_TravelGateX
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(670, 384);
+            this.tabPage2.Size = new System.Drawing.Size(635, 384);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Data View";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -178,47 +196,43 @@ namespace Prueba_TravelGateX
             this.Tb_Code.Name = "Tb_Code";
             this.Tb_Code.ReadOnly = true;
             this.Tb_Code.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Tb_Code.Size = new System.Drawing.Size(664, 378);
+            this.Tb_Code.Size = new System.Drawing.Size(629, 378);
             this.Tb_Code.TabIndex = 0;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.Tb_Log);
+            this.tabPage3.Controls.Add(this.Tb_Travel);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(670, 384);
+            this.tabPage3.Size = new System.Drawing.Size(635, 384);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Log";
+            this.tabPage3.Text = "Viaje Solicitado";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Tb_Log
+            // Tb_Travel
             // 
-            this.Tb_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Tb_Travel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tb_Log.BackColor = System.Drawing.Color.White;
-            this.Tb_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_Log.Location = new System.Drawing.Point(3, 3);
-            this.Tb_Log.Multiline = true;
-            this.Tb_Log.Name = "Tb_Log";
-            this.Tb_Log.ReadOnly = true;
-            this.Tb_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Tb_Log.Size = new System.Drawing.Size(664, 378);
-            this.Tb_Log.TabIndex = 1;
+            this.Tb_Travel.Location = new System.Drawing.Point(3, 3);
+            this.Tb_Travel.Multiline = true;
+            this.Tb_Travel.Name = "Tb_Travel";
+            this.Tb_Travel.ReadOnly = true;
+            this.Tb_Travel.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Tb_Travel.Size = new System.Drawing.Size(629, 378);
+            this.Tb_Travel.TabIndex = 1;
             // 
             // Frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 558);
+            this.ClientSize = new System.Drawing.Size(664, 558);
             this.Controls.Add(this.Tab_Principal);
             this.Controls.Add(this.Panel_Filtros);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TravelGateX";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel_Filtros.ResumeLayout(false);
             this.Tab_Principal.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -242,10 +256,11 @@ namespace Prueba_TravelGateX
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         public System.Windows.Forms.ListView Lista;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button Btn_Get_Data;
-        private System.Windows.Forms.TextBox Tb_Log;
         public System.Windows.Forms.TextBox Tb_Code;
+        private System.Windows.Forms.Button Btn_Travel;
+        private System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.TextBox Tb_Travel;
     }
 }
 
